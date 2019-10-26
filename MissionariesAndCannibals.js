@@ -105,24 +105,14 @@ function checkWin(state) {
 }
 
 function movimentoValido(state) {
-    if (state.B == 1) { // Barco do lado errado (esquerda) 
-        if (state.C > state.M) {
-            return false;
-        } else {
-            return true;
-        }
-    } else {
-        if (state.C < state.M) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    /* if (state.C > state.M) {
+    let wrongSide = state,
+        rightSide = { M: 3 - state.M, C: 3 - state.C, B: 1 - state.B };
+
+    if (wrongSide.C > wrongSide.M && wrongSide.M > 0 || rightSide.C > rightSide.M && rightSide.M > 0) {
         return false;
     } else {
         return true;
-    } */
+    }
 }
 
 function hashState(state) {
